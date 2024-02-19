@@ -1,0 +1,15 @@
+version: '3'
+services:
+  anti_proxy:
+    container_name: proxy
+    hostname: proxy
+    restart: always
+    build: squid
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - "5354:5354/udp"
+      - "5354:5354/tcp"
+    volumes:
+      - ./squid/data/:/etc/squid/
+      - ./squid/logs/:/dev/stdout/
